@@ -61,8 +61,8 @@ OLDPID_1=`netstat -tunlp|grep $PORT1|awk '{print $7}'|cut -d '/' -f 1`
 OLDPID_NUM_1=`netstat -tunlp|grep $PORT1|awk '{print $7}'|cut -d '/' -f 1|wc -l`
 OLDPID_NUM_2=`netstat -tunlp|grep $PORT2|awk '{print $7}'|cut -d '/' -f 1|wc -l`
 #OLDPID_1=`ps -ef|grep -v grep|grep server.port=$PORT1|awk '{print $2}'`
-#OLDPID_NUM_1=`ps -ef|grep -v grep|grep server.port=$PORT1||wc -l`
-#OLDPID_NUM_2=`ps -ef|grep -v grep|grep server.port=$PORT2||wc -l`
+#OLDPID_NUM_1=`ps -ef|grep -v grep|grep server.port=$PORT1|wc -l`
+#OLDPID_NUM_2=`ps -ef|grep -v grep|grep server.port=$PORT2|wc -l`
 if [ $OLDPID_NUM_1 -gt 0 ];then
     if [ $OLDPID_NUM_2 -gt 0 ];then
         kill -9 $OLDPID_1
