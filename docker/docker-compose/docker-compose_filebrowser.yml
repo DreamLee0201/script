@@ -1,0 +1,13 @@
+version: "3"
+services:
+  filebrowser:
+    image: 'filebrowser/filebrowser:latest'
+    container_name: 'filebrowser'
+    restart: unless-stopped
+    ports: 
+      - '8081:80'
+    user: root
+    volumes:
+      - ./data/filebrowser/sites/root:/srv
+      - ./data/filebrowser/config.json:/etc/config.json
+      - ./data/filebrowser/database.db:/etc/database.db

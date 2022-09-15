@@ -1,0 +1,13 @@
+version: "3"
+services:
+  nginx:
+    image: 'nginx:latest'
+    container_name: 'nginx'
+    restart: unless-stopped
+    ports: 
+      - '80:80'
+    volumes:
+      - ./data/nginx_conf/log:/var/log/nginx
+      - ./data/nginx_conf/conf.d:/etc/nginx/conf.d
+      - ./data/nginx_conf/conf/nginx.conf:/etc/nginx/nginx.conf
+      - /home/zjbj/repository:/opt/repository
