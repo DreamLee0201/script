@@ -39,8 +39,25 @@ symbolic-links=0
 
 lower_case_table_names=1
 
+#设置日志三种格式：STATEMENT、ROW、MIXED 
+binlog_format = mixed
+#设置日志路径，注意路经需要mysql用户有权限写,这里可以写绝对路径,也可以直接写mysql-bin(后者默认就是在/var/lib/mysql目录下)
+log-bin = mysql-bin
+#设置binlog清理时间
+expire_logs_days = 0
+#binlog每个日志文件大小
+max_binlog_size = 100m
+#binlog缓存大小
+binlog_cache_size = 4m
+#最大binlog缓存大小
+max_binlog_cache_size = 512m
 #配置serverid
-server-id=10
+server-id=1
 
 default-time_zone = '+8:00'
 max_allowed_packet=400M
+
+
+#主从配置相关
+sync_binlog=1
+binlog-do-db=cloud
