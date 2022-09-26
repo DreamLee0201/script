@@ -8,6 +8,7 @@ DB2="cloud"
 cd $(dirname $0)
 CURRENT_DIR=`pwd`
 DATE=`date +%F`
+TIME=`date "+%Y-%m-%d_%H_%M_%S"`
 mkdir -pv {${CURRENT_DIR}/${DATE}/${DB1}/,${CURRENT_DIR}/${DATE}/${DB2}/}
 TABLES1=`mysql -h $HOST -P $PORT -u $USER -p$PASSWD -Bse 'use mysql;show tables'`
 TABLES2=`mysql -h $HOST -P $PORT -u $USER -p$PASSWD -Bse 'use cloud;show tables'`
@@ -24,7 +25,7 @@ for TABLE_NAME in ${TABLES2}
   done
 
 if [[ -d ${DATE} ]];then 
-  tar -zcvf ${CURRENT_DIR}/DB_${DATE}.tar.gz ${DATE}/
+  tar -zcvf ${CURRENT_DIR}/DB_${TIME}.tar.gz ${DATE}/
   rm -rf ${DATE}/
 fi
 echo ${DATE}'备份完成。'
