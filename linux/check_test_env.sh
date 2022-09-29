@@ -35,6 +35,33 @@ RUNNING_NUM_5051=`netstat -tunlp|grep ':5051 '|awk '{print $7}'|cut -d '/' -f 1|
 
 RUNNING_NUM_7089=`netstat -tunlp|grep ':7089 '|awk '{print $7}'|cut -d '/' -f 1|wc -l`
 RUNNING_NUM_80=`netstat -tunlp|grep ':80 '|awk '{print $7}'|cut -d '/' -f 1|wc -l`
+RUNNING_NUM_88=`netstat -tunlp|grep ':88 '|awk '{print $7}'|cut -d '/' -f 1|wc -l`
+RUNNING_NUM_8091=`netstat -tunlp|grep ':8091 '|awk '{print $7}'|cut -d '/' -f 1|wc -l`
+
+
+#帆软
+if [ $RUNNING_NUM_88 -le 0 ];then
+  error "帆软，【重启】"
+  cd /home/cscec/fine_report_tomcat/bin
+  nohup ./startup.sh &
+else
+  info "帆软，不需要重启"
+fi
+
+
+
+
+#nginx_88
+if [ $RUNNING_NUM_88 -le 0 ];then
+  error "nginx_88，【重启】"
+  cd /home/cscec/jenkins/nginx/sbin
+  nohup ./nginx &
+else
+  info "nginx_88，不需要重启"
+fi
+
+
+
 
 #砼智慧测试 前端
 if [ $RUNNING_NUM_7089 -le 0 ];then

@@ -41,6 +41,7 @@ lower_case_table_names=1
 
 #配置serverid
 server-id=10
+relay-log=mysql-relay
 
 default-time_zone = '+8:00'
 max_allowed_packet=400M
