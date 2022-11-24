@@ -1,10 +1,10 @@
 #!/bin/bash
-HOST="192.168.18.128"
-PORT="3302"
-USER="root"
-PASSWD="123456"
-DB_NAME="cloud"
-FILE_DIR="show"
+HOST="rm-bp15562vwk0phub9xho.mysql.rds.aliyuncs.com"
+PORT="3306"
+USER="cloud_uat"
+PASSWD="CloudUat@0900"
+DB_NAME="cloud_uat"
+FILE_DIR="/root/DB_backup/test/2022-10-18/cloud"
 date=`date +%F`
 cd $(dirname $0)
 TABLES=`ls ${FILE_DIR}`
@@ -15,5 +15,6 @@ for TABLE_NAME in ${TABLES}
   done
   
 echo "Done!!!"
+
 
 

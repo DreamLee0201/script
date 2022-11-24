@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source /etc/profile
+source ~/.bash_profile
 
 # 日志颜色
 COLOR_G="\x1b[0;32m"
@@ -43,7 +44,7 @@ RUNNING_NUM_8091=`netstat -tunlp|grep ':8091 '|awk '{print $7}'|cut -d '/' -f 1|
 if [ $RUNNING_NUM_88 -le 0 ];then
   error "帆软，【重启】"
   cd /home/cscec/fine_report_tomcat/bin
-  nohup ./startup.sh &
+  ./startup.sh
 else
   info "帆软，不需要重启"
 fi
@@ -55,7 +56,7 @@ fi
 if [ $RUNNING_NUM_88 -le 0 ];then
   error "nginx_88，【重启】"
   cd /home/cscec/jenkins/nginx/sbin
-  nohup ./nginx &
+  ./nginx
 else
   info "nginx_88，不需要重启"
 fi
@@ -67,7 +68,7 @@ fi
 if [ $RUNNING_NUM_7089 -le 0 ];then
   error "砼智慧测试 前端，【重启】"
   cd /opt/cloud_tong/frontend/server
-  nohup ./startup.sh &
+  ./startup.sh
 else
   info "砼智慧测试 前端，不需要重启"
 fi
@@ -92,7 +93,7 @@ fi
 if [ $RUNNING_NUM_80 -le 0 ];then
   error "管理平台测试 前端，【重启】"
   cd /home/cscec/code/server
-  nohup ./startup.sh &
+  ./startup.sh
 else
   info "管理平台测试 前端，不需要重启"
 fi
